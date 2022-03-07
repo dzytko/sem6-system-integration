@@ -72,13 +72,13 @@ namespace lab1
                 }
             }
 
-            var mostCreamsEntity = entityCreamCount.Aggregate((left, right) => left.Value > right.Value ? left : right).Key;
-            var mostTabletsEntity = entityTabletCount.Aggregate((left, right) => left.Value > right.Value ? left : right).Key;
+            var mostCreamsEntity = entityCreamCount.Aggregate((left, right) => left.Value > right.Value ? left : right);
+            var mostTabletsEntity = entityTabletCount.Aggregate((left, right) => left.Value > right.Value ? left : right);
             var topThreeCreamEntities = (from ele in entityCreamCount orderby ele.Value descending select ele).Take(3);
 
             Console.WriteLine($"Liczba produktów leczniczych w postaci kremu, których jedyną substancją czynną jest Mometasoni furoas: {count}");
             Console.WriteLine($"Liczba preparatów leczniczych o takiej samie nazwie powszechnej, pod różnymi postaciami: {commonNameForms.Values.Count(set => set.Count > 1)}");
-            Console.WriteLine($"Podmiot produkujacy najwiecej kremow: {mostCreamsEntity}, podmiot produkujacy najwiecej tabletek: {mostTabletsEntity}");
+            Console.WriteLine($"Podmiot produkujacy najwiecej kremow: {mostCreamsEntity.Key}({mostCreamsEntity.Value}), podmiot produkujacy najwiecej tabletek: {mostTabletsEntity.Key}({mostTabletsEntity.Value})");
             Console.WriteLine($"3 podmioty produkujace najwiecej kremu: ");
             foreach (var (entity, creamCount) in topThreeCreamEntities)
                 Console.WriteLine($"\t{entity}: {creamCount}");

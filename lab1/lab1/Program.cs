@@ -10,16 +10,16 @@ namespace lab1
             var xmlpath = Path.Combine("Assets", "data.xml");
             // DOM
             Console.WriteLine("XML loaded by DOM Approach");
-            XmlReadWithXsltDom.Read(xmlpath);
+            XMLReadWithDomApproach.Read(xmlpath);
 
             // SAX
             Console.WriteLine("\nXML loaded by SAX Approach");
             XmlReadWithSax.Read(xmlpath);
-
+            
             // XPath 
             Console.WriteLine("\nXML loaded with XPath");
             XmlReadWithXsltDom.Read(xmlpath);
-
+            
             // Deeper analysis
             Console.WriteLine("\nDeeper analysis");
             DeeperAnalysis.ReadActiveIngredientStats(xmlpath);
