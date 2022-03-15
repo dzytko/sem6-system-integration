@@ -1,0 +1,5 @@
+paths:
+  source_dir: 'Assets/'
+  json_source_file: 'data.json'
+  json_destination_file: 'data_mod.json'
+  yaml_destination_file: 'data.yaml'
