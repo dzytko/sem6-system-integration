@@ -13,7 +13,7 @@ $sql = "INSERT INTO actor (first_name, last_name) VALUES ('name', 'lastname')";
 $conn->query($sql);
 echo "Table actor added";
 
-$sql = "DELETE FROM actor WHERE name='name'";
+$sql = "DELETE FROM actor WHERE first_name='name'";
 $conn->query($sql);
 echo "Table actor added";
 
