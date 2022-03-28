@@ -37,8 +37,8 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     List<UsersGroup> groups = new ArrayList<>();
 
-    @Lob
-    Blob img;
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private byte[] img;
 
 
     public User(Long id, String login, String password, String firstName, String lastName, Sex sex) {
@@ -48,6 +48,9 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
+    }
+
+    public User() {
     }
 
     public void addRole(Role role) {
@@ -77,6 +80,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     public void setPassword(String password) {
