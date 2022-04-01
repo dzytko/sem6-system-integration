@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9eb0906f-cd14-43d1-b766-26fffaf6d558" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d01e7b42-768e-44de-984f-b4a117755270.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d01e7b42-768e-44de-984f-b4a117755270.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +16,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,8 +35,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab5/soap_server" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -62,6 +69,14 @@
       <option name="presentableId" value="Default" />
       <updated>1648473991945</updated>
       <workItem from="1648473992451" duration="4799000" />
+      <workItem from="1648806917851" duration="122000" />
+      <workItem from="1648807078458" duration="120000" />
+      <workItem from="1648807364657" duration="89000" />
+      <workItem from="1648807514805" duration="9000" />
+      <workItem from="1648807700759" duration="161000" />
+      <workItem from="1648807902467" duration="71000" />
+      <workItem from="1648815793857" duration="383000" />
+      <workItem from="1648816898017" duration="134000" />
     </task>
     <servers />
   </component>
