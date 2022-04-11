@@ -18,6 +18,7 @@ public class Main {
 
             System.out.println("Pobieranie odpowiedzi...");
             String source = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+            source = "{\"cities\":" + source + "}";
 
             System.out.println("Przetwarzanie danych...");
             JSONObject json = new JSONObject(source);
