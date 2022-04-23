@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using lab8.Entities;
-using lab8.Model;
+using server.Entities;
+using server.Model;
 
-namespace lab8.Services.UserService
+namespace server.Services.UserService
 {
     public interface IUserService
     {

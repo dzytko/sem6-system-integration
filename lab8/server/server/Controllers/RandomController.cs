@@ -3,19 +3,21 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace lab8.Controllers
+namespace server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class RandomController: ControllerBase
     {
-        [HttpGet]
+        [HttpGet("/")]
         [Authorize(Roles = "number", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
-        public IActionResult GetRandomNubmer()
+        public IActionResult GetRandomPrimeNumberBetween2And13()
         {
-            var rnd = new Random();
-            var randomNumber = rnd.Next(2, 13);
-            return Ok(randomNumber);
+            var primesBetween2And13 = new int[] { 2, 3, 5, 7, 11, 13 };
+
+            var random = new Random();
+            var randomPrimeNumber = primesBetween2And13[random.Next(0, primesBetween2And13.Length)];
+            return Ok(randomPrimeNumber);
         }
     }
 }

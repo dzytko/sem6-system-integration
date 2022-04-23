@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using lab8.Entities;
+using server.Entities;
 
 
-namespace lab8.Model
+namespace server.Model
 {
     public class AuthenticationResponse
     {

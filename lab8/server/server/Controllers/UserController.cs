@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using lab8.Model;
-using lab8.Services.UserService;
+using server.Model;
+using server.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
-namespace lab8.Controllers
+namespace server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

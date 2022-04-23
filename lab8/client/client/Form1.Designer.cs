@@ -87,6 +87,7 @@
             this.login_button.TabIndex = 4;
             this.login_button.Text = "Log in";
             this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
             // jwt_label
             // 
@@ -122,6 +123,7 @@
             this.get_user_count_button.TabIndex = 8;
             this.get_user_count_button.Text = "Send";
             this.get_user_count_button.UseVisualStyleBackColor = true;
+            this.get_user_count_button.Click += new System.EventHandler(this.get_user_count_button_Click);
             // 
             // get_random_prime_label
             // 
@@ -140,6 +142,7 @@
             this.get_random_prime_button.TabIndex = 10;
             this.get_random_prime_button.Text = "Send";
             this.get_random_prime_button.UseVisualStyleBackColor = true;
+            this.get_random_prime_button.Click += new System.EventHandler(this.get_random_prime_button_Click);
             // 
             // get_users_label
             // 
@@ -158,24 +161,23 @@
             this.get_users_button.TabIndex = 12;
             this.get_users_button.Text = "Send";
             this.get_users_button.UseVisualStyleBackColor = true;
+            this.get_users_button.Click += new System.EventHandler(this.get_users_button_Click);
             // 
             // get_user_count_res_label
             // 
             this.get_user_count_res_label.AutoSize = true;
             this.get_user_count_res_label.Location = new System.Drawing.Point(532, 27);
             this.get_user_count_res_label.Name = "get_user_count_res_label";
-            this.get_user_count_res_label.Size = new System.Drawing.Size(28, 15);
+            this.get_user_count_res_label.Size = new System.Drawing.Size(0, 15);
             this.get_user_count_res_label.TabIndex = 13;
-            this.get_user_count_res_label.Text = "";
             // 
             // get_random_prime_res_label
             // 
             this.get_random_prime_res_label.AutoSize = true;
             this.get_random_prime_res_label.Location = new System.Drawing.Point(532, 65);
             this.get_random_prime_res_label.Name = "get_random_prime_res_label";
-            this.get_random_prime_res_label.Size = new System.Drawing.Size(28, 15);
+            this.get_random_prime_res_label.Size = new System.Drawing.Size(0, 15);
             this.get_random_prime_res_label.TabIndex = 14;
-            this.get_random_prime_res_label.Text = "";
             // 
             // get_users_res_textbox
             // 

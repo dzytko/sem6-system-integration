@@ -6,11 +6,11 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using lab8.Entities;
-using lab8.Model;
+using server.Entities;
+using server.Model;
 using Microsoft.IdentityModel.Tokens;
 
-namespace lab8.Services.UserService
+namespace server.Services.UserService
 {
     public class UserService : IUserService
     {
