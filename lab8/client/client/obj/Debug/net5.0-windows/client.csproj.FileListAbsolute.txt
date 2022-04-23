@@ -1,0 +1,16 @@
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.exe
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.deps.json
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.runtimeconfig.json
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.runtimeconfig.dev.json
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.dll
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\ref\client.dll
+D:\Uni\system_integration\lab8\client\client\bin\Debug\net5.0-windows\client.pdb
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.csproj.AssemblyReference.cache
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.AssemblyInfoInputs.cache
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.AssemblyInfo.cs
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.csproj.CoreCompileInputs.cache
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.dll
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\ref\client.dll
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.pdb
+D:\Uni\system_integration\lab8\client\client\obj\Debug\net5.0-windows\client.genruntimeconfig.cache
