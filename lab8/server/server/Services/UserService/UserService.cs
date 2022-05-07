@@ -16,7 +16,7 @@ namespace server.Services.UserService
     {
         private static List<User> users = new List<User>
         {
-            new User
+            new()
             {
                 Id = 1,
                 Username = "Andrzej",
@@ -27,7 +27,7 @@ namespace server.Services.UserService
                     new Role { Role_ = "user" }
                 }
             },
-            new User
+            new()
             {
                 Id = 2,
                 Username = "Piotrek",
@@ -38,7 +38,7 @@ namespace server.Services.UserService
                     new Role { Role_ = "user" }
                 }
             },
-            new User
+            new()
             {
                 Id = 3,
                 Username = "Ania",

@@ -9,7 +9,7 @@ namespace server.Controllers
     [ApiController]
     public class RandomController: ControllerBase
     {
-        [HttpGet("/")]
+        [HttpGet("")]
         [Authorize(Roles = "number", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
         public IActionResult GetRandomPrimeNumberBetween2And13()
         {

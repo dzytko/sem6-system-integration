@@ -33,7 +33,7 @@ namespace server.Controllers
         }
         
         
-        [HttpGet("/")]
+        [HttpGet("")]
         [Authorize(Roles = "admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
         public IActionResult GetAll()
         {
@@ -41,7 +41,7 @@ namespace server.Controllers
             return Ok(users);
         }
         
-        [HttpGet("/count")]
+        [HttpGet("count")]
         [Authorize(Roles = "user", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult GetRegisteredUsersCount()
         {

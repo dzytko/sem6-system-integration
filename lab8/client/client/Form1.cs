@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 using Newtonsoft.Json;
 
 namespace client
@@ -13,10 +18,35 @@ namespace client
         public string Token { get; set; }
     }
 
+    public class AuthenticationRequest
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+    
+    public class Role
+    {
+        public string Role_{ get; set; }
+        public override string ToString()
+        {
+            return Role_;
+        }
+    }
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public List<Role> Roles { get; set; }
+        public override string ToString()
+        {
+            return $"{Username}, Roles: [{string.Join(", ", Roles)}]";;
+        }
+    }
+
     public partial class Form1 : Form
     {
         private const string UrlBase = "http://localhost:8080/";
-        private string _jwt;
+        private readonly HttpClient _httpClient = new();
 
         public Form1()
         {
@@ -27,89 +57,94 @@ namespace client
         {
         }
 
-        private void login_button_Click(object sender, EventArgs e)
+        private async void login_button_Click(object sender, EventArgs e)
         {
-            const string url = UrlBase + "api/authenticate";
-            var username = username_textbox.Text;
-            var password = password_textbox.Text;
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            var json = $"{{\"username\":\"{username}\",\"password\":\"{password}\"}}";
-
-            using var streamWriter = new StreamWriter(request.GetRequestStream());
-            streamWriter.Write(json);
-
-            var httpResponse = (HttpWebResponse)request.GetResponse();
-            if (httpResponse.StatusCode != HttpStatusCode.OK)
+            _httpClient.DefaultRequestHeaders.Remove("Authorization");
+            const string url = UrlBase + "api/User/authenticate";
+            var request = new AuthenticationRequest
             {
-                MessageBox.Show("Error");
-                return;
-            }
-            using var streamReader = new StreamReader(httpResponse.GetResponseStream());
-            var response = streamReader.ReadToEnd();
-            var authResponse = JsonConvert.DeserializeObject<AuthenticationResponse>(response)!;
-            _jwt = authResponse.Token;
-            jwt_textbox.Text = _jwt;
-        }
-
-        private void get_user_count_button_Click(object sender, EventArgs e)
-        {
-            const string url = UrlBase + "api/users/count";
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.Headers.Add("Authorization", $"Bearer {_jwt}");
+                Username = username_textbox.Text,
+                Password = password_textbox.Text
+            };
             
-            var httpResponse = (HttpWebResponse)request.GetResponse();
-            if (httpResponse.StatusCode != HttpStatusCode.OK)
+            var jsonRequest = JsonConvert.SerializeObject(request);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(url, content);
+            if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show($@"{response.ReasonPhrase}",@"Login failed");
+                jwt_textbox.Text = "";
                 return;
             }
-            using var streamReader = new StreamReader(httpResponse.GetResponseStream());
-            var response = streamReader.ReadToEnd();
-            get_user_count_res_label.Text = response;
+            
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var responseObject = JsonConvert.DeserializeObject<AuthenticationResponse>(jsonResponse);
+            
+            var jwt = responseObject?.Token;
+            if (jwt == null)
+            {
+                jwt_textbox.Text = "";
+                return;
+            }
+
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {jwt}");
+            jwt_textbox.Text = jwt;
         }
 
-        private void get_random_prime_button_Click(object sender, EventArgs e)
+        private async void get_user_count_button_Click(object sender, EventArgs e)
         {
-            const string url = UrlBase + "api/random";
+            const string url = UrlBase + "api/User/count";
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.Headers.Add("Authorization", $"Bearer {_jwt}");
-
-            var httpResponse = (HttpWebResponse)request.GetResponse();
-            if (httpResponse.StatusCode != HttpStatusCode.OK)
+            var response = await _httpClient.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show($@"{response.ReasonPhrase}",@"Failed to get user count");
+                get_user_count_res_label.Text = "";
                 return;
             }
-            using var streamReader = new StreamReader(httpResponse.GetResponseStream());
-            var response = streamReader.ReadToEnd();
-            get_random_prime_res_label.Text = response;
+            
+            var jsonResponse = await  response.Content.ReadAsStringAsync();
+            var userCount = JsonConvert.DeserializeObject<int>(jsonResponse);
+            
+            get_user_count_res_label.Text = userCount.ToString();
         }
 
-        private void get_users_button_Click(object sender, EventArgs e)
+        private async void get_random_prime_button_Click(object sender, EventArgs e)
         {
-            const string url = UrlBase + "api/user";
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.Headers.Add("Authorization", $"Bearer {_jwt}");
-
-            var httpResponse = (HttpWebResponse)request.GetResponse();
-            if (httpResponse.StatusCode != HttpStatusCode.OK)
+            const string url = UrlBase + "api/Random";
+            
+            var response = await _httpClient.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show($@"{response.ReasonPhrase}",@"Failed to get random prime");
+                get_random_prime_res_label.Text = "";
                 return;
             }
+            
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var randomPrime = JsonConvert.DeserializeObject<int>(jsonResponse);
+            
+            get_random_prime_res_label.Text = randomPrime.ToString();
+        }
 
-            using var streamReader = new StreamReader(httpResponse.GetResponseStream());
-            var response = streamReader.ReadToEnd();
-            get_users_res_textbox.Text = response;
+        private async  void get_users_button_Click(object sender, EventArgs e)
+        {
+            const string url = UrlBase + "api/User";
+            
+            var response = await _httpClient.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show($@"{response.ReasonPhrase}", @"Failed to get users");
+                get_users_res_textbox.Text = "";
+                return;
+            }
+            
+            var jsonResponse = response.Content.ReadAsStringAsync().Result;
+            var users = JsonConvert.DeserializeObject<List<User>>(jsonResponse);
+            if (users == null)
+                return;
+
+            get_users_res_textbox.Text = string.Join("\n", users);
         }
     }
 }
