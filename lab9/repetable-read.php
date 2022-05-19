@@ -1,6 +1,6 @@
 <?php
 // example of REPEATABLE READ transaction isolation level
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "sakila1";
 $password = "pass";
 $database = "sakila";
@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 echo "Databse connected successfully, username " . $username . "<br><br>";
 // Do not change the default isolation level REPEATABLE READ
 // Start transaction
-//$conn->begin_transaction();
+$conn->begin_transaction();
 echo "Before sleep<br>";
 $sql = "SELECT actor_id, first_name, last_name FROM actor WHERE first_name = 'ADAM'";
 $result = $conn->query($sql);
@@ -46,6 +46,6 @@ else {
     echo "0 results<br>";
 }
 //End transaction
-//$conn->commit();
+$conn->commit();
 $conn->close();
 ?>

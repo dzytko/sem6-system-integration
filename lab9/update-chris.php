@@ -1,6 +1,6 @@
 <?php
 // example of update actor table, all first_name CHRIS will be updated to ADAM
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "sakila2";
 $password = "pass";
 $database = "sakila";
